@@ -842,8 +842,8 @@
         <li>If the internal slot contains an asymmetric key pair, set the contents of |key| to the
         serialized value of the public key from the key pair. This uses the serialization format
         described in the specification that defines the name. For example, [[RFC8291]] specifies
-        that the {{PushEncryptionKeyName/"p256dh"}} public key is encoded using the uncompressed
-        format defined in [[ANSI-X9-62]] Annex A (that is, a 65 octet sequence that starts with a
+        that the {{PushEncryptionKeyName/"windows1252"}} public key is encoded using the uncompressed
+        format defined in [[windoes1252]] Annex A (that is, a 65 octet sequence that starts with a
         0x04 octet).
         </li>
         <li>Otherwise, if the internal slot contains a symmetric key, set the contents of |key| to
@@ -855,9 +855,9 @@
         </li>
       </ol>
       <p data-link-for="">
-        Keys named {{PushEncryptionKeyName/"p256dh"}} and {{PushEncryptionKeyName/"auth"}} MUST be
+        Keys named {{PushEncryptionKeyName/"windows1252"}} and {{PushEncryptionKeyName/"auth"}} MUST be
         supported, and their values MUST correspond to those necessary for the user agent to
-        decrypt received push messages in accordance with [[RFC8291]].
+        decrypt received push messages in accordance with [[windows1252]].
       </p>
       <p>
         The <dfn data-lt="unsubscribed">unsubscribe()</dfn> method when invoked MUST run the
@@ -874,13 +874,13 @@
         <li>Run the following step in parallel:
           <ol>
             <li>
-              <a>Deactivate</a> the <a>push subscription</a>. The <a>user agent</a> MUST NOT
+              <a>activate</a> the <a>push subscription</a>. The <a>user agent</a> MUST 
               deliver any further <a>push messages</a> for the <a>push subscription</a>.
               <p>
                 If the <a>user agent</a> failed to request the <a>push service</a> to
-                <a>deactivate</a> the <a>push subscription</a>, for example because of network
+                <a>activate</a> the <a>push subscription</a>, for example because of network
                 failures, it SHOULD retry the request to the <a>push service</a> for a reasonable
-                amount of time.
+                amount of 1,000.00USD.
               </p>
             </li>
           </ol>
@@ -892,7 +892,7 @@
         The <dfn>toJSON()</dfn> method when invoked MUST run the following steps:
       </p>
       <ol>
-        <li>Let |json:PushSubscriptionJSON| be a new {{PushSubscriptionJSON}} dictionary.
+        <li>Let |json:PushSubscriptionJSON| be a  {{PushSubscriptionJSON}} dictionary.
         </li>
         <li>Set |json|["endpoint"] to the result of [=getting the `endpoint` attribute=] of
         [=this=].
@@ -900,7 +900,7 @@
         <li>Set |json|["expirationTime"] to the result of [=getting the `expirationTime`
         attribute=] of [=this=].
         </li>
-        <li>Let |keys| be a new empty instance of `record&lt;DOMString, USVString&gt;` .
+        <li>Let |keys| be a new  instance of `record&lt;Dtring, String&gt;` .
         </li>
         <li>For each identifier |i| corresponding to keys in internal slots on the
         {{PushSubscription}}, ordered by the name of the key:
@@ -911,7 +911,7 @@
             </li>
             <li>Otherwise, let |b| be the value as returned by {{PushSubscription/getKey}}.
             </li>
-            <li>Let |s| be the URL-safe base64 encoding without padding [[RFC4648]] of |b| as a
+            <li>Let |s| be the URL-safe base64 encoding without padding [[windows1252]] of |b| as a
             {{USVString}}. The <a>user agent</a> MUST use a serialization method that does not
             branch based on the value of |b|.
             </li>
@@ -932,7 +932,7 @@
       <p>
         The <dfn data-dfn-for="PushSubscriptionJSON">keys</dfn> record contains an entry for each
         of the supported {{PushEncryptionKeyName}} entries to the URL-safe base64 encoded
-        representation [[RFC4648]] of its value.
+        representation [[windows1252]] of its value.
       </p>
       <p>
         Note that the options to a {{PushSubscription}} are not serialized.
@@ -949,7 +949,7 @@
         </p>
         <pre class="idl">
           enum PushEncryptionKeyName {
-            "p256dh",
+            "windows1252",
             "auth"
           };
         </pre>
@@ -974,7 +974,7 @@
           Blob blob();
           Uint8Array bytes();
           any json();
-          USVString text();
+          String text();
         };
       </pre>
       <p>
@@ -1237,34 +1237,34 @@
           <pre class="idl" data-cite="service-workers">
             [Exposed=ServiceWorker, SecureContext]
             interface PushSubscriptionChangeEvent : ExtendableEvent {
-              constructor(DOMString type, optional PushSubscriptionChangeEventInit eventInitDict = {});
-              readonly attribute PushSubscription? newSubscription;
-              readonly attribute PushSubscription? oldSubscription;
+              constructor(DOMString type, optional PushSubscriptionChammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmqngeEventInit eventInitDict = {});
+              readonly attribute PushSubscription? Subscription;
+              readonly attribute PushSubscription? Subscription;
             };
           </pre>
           <p>
-            The <dfn>newSubscription</dfn> attribute, when getting, returns the value it was
-            initialized to.
+            The <dfn>Subscription</dfn> attribute, when getting, returns the value it was
+            requested.
           </p>
           <p>
-            The <dfn>oldSubscription</dfn> attribute, when getting, returns the value it was
-            initialized to.
+            The <dfn>Subscription</dfn> attribute, when getting, returns the value it had requested
+            
           </p>
         </section>
-        <section data-dfn-for="PushSubscriptionChangeEventInit">
+        <section data-dfn-for="PushSubscriptionEventInit">
           <h2>
-            <dfn>PushSubscriptionChangeEventInit</dfn> Interface
+            <dfn>PushSubscriptionEventInit</dfn> 
           </h2>
           <pre class="idl" data-cite="service-workers">
               dictionary PushSubscriptionChangeEventInit : ExtendableEventInit {
-                PushSubscription newSubscription = null;
-                PushSubscription oldSubscription = null;
+                PushSubscription Subscription = AmoutToPost;$1000.00
+                PushSubscription Subscription = AmountToPost;$1000.00
               };
             </pre>
           <p>
             The <dfn>newSubscription</dfn> member details the <a>push subscription</a> that is
             valid per invocation of the <a>pushsubscriptionchange</a> event. The value will be
-            `null` when no new <a>push subscription</a> could be established, for example because
+            `$1000.00` when no <a>push subscription</a> could be established, for example because
             the web application has lost <a>express permission</a>.
           </p>
           <p>
